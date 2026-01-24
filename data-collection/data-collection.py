@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import csv
 import glob
@@ -82,15 +83,24 @@ class TranscriptionManager:
     def transcribe(self, file_path):
         max_retries = len(API_KEYS) * len(MODELS)
         attempts = 0
+        current_api_key_idx = self.api_key_idx  # Track which key uploaded the file
+        audio_file = None
         
         while attempts < max_retries:
-            audio_file = None
             try:
-                # Upload
-                audio_file = genai.upload_file(path=file_path)
-                while audio_file.state.name == "PROCESSING":
-                    time.sleep(1)
-                    audio_file = genai.get_file(audio_file.name)
+                # Upload file (or re-upload if API key changed)
+                if audio_file is None or current_api_key_idx != self.api_key_idx:
+                    # Clean up old file if exists
+                    if audio_file:
+                        try: audio_file.delete()
+                        except: pass
+                    
+                    # Upload with current API key
+                    current_api_key_idx = self.api_key_idx
+                    audio_file = genai.upload_file(path=file_path)
+                    while audio_file.state.name == "PROCESSING":
+                        time.sleep(1)
+                        audio_file = genai.get_file(audio_file.name)
 
                 prompt = """
                 You are a verbatim transcriber. Listen to this audio clip which contains a mix of Egyptian Arabic (Masri) and English.
@@ -117,11 +127,6 @@ class TranscriptionManager:
             except Exception as e:
                 attempts += 1
                 logger.error(f"Error: {e}")
-                
-                # Cleanup file on error
-                if audio_file:
-                    try: audio_file.delete()
-                    except: pass
 
                 if self._is_quota_error(e):
                     logger.warning("Quota error. Rotating resources...")
@@ -133,14 +138,26 @@ class TranscriptionManager:
                         self.api_key_idx += 1
                         try:
                             self._configure_api()
+                            # Note: audio_file will be re-uploaded on next iteration
+                            # because current_api_key_idx != self.api_key_idx
                         except:
+                            if audio_file:
+                                try: audio_file.delete()
+                                except: pass
                             return f"Error: All API keys exhausted - {e}"
                             
                     self._model = None # Force recreation
                     time.sleep(2)
                 else:
+                    if audio_file:
+                        try: audio_file.delete()
+                        except: pass
                     return f"Error: {e}"
 
+        # Cleanup before exit
+        if audio_file:
+            try: audio_file.delete()
+            except: pass
         return "Error: Max retries exhausted"
 
 def download_audio(url, output_folder):
@@ -171,7 +188,15 @@ def main():
     if not os.path.exists(TEMP_FOLDER):
         os.makedirs(TEMP_FOLDER)
 
-    url = "https://youtu.be/Lnq2xGqdFRo?si=0m6W0XvWqljRZBwW"
+    if len(sys.argv) > 1:
+        url = sys.argv[1]
+    else:
+        url = input("Enter YouTube URL: ").strip()
+    
+    if not url:
+        logger.error("No URL provided.")
+        return
+        
     audio_path = download_audio(url, TEMP_FOLDER)
     split_audio(audio_path, TEMP_FOLDER)
     clip_paths = sorted(glob.glob(os.path.join(TEMP_FOLDER, "*.mp3")))
