@@ -362,9 +362,9 @@ vite.config.ts.timestamp-*
 
 # Project Related
 temp_clips/
-.mp3
-.mp4
-.wav
+*.mp3
+*.mp4
+*.wav
 *.csv
 processing_state.json
 
