@@ -1,0 +1,16 @@
+{
+  "name": "whisperflow",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend/whisperflow-backend",
+    "libs/*"
+  ],
+  "scripts": {
+    "dev:frontend": "npm run dev -w frontend",
+    "dev:backend": "npm run start:dev -w whisperflow-backend",
+    "build:frontend": "npm run build -w frontend",
+    "build:backend": "npm run build -w whisperflow-backend",
+    "lint": "npm run lint --workspaces --if-present"
+  }
+}
