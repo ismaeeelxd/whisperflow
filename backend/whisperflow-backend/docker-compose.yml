@@ -1,0 +1,11 @@
+services:
+  whisperflow-backend:
+    build:
+      context: ../.. # Build from monorepo root
+      dockerfile: backend/whisperflow-backend/Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    restart: unless-stopped
