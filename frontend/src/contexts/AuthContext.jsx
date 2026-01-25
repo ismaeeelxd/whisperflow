@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 import { auth } from "../firebase";
 import {
   createUserWithEmailAndPassword,
@@ -6,25 +6,33 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { AuthContext } from "./AuthContext";
+
+export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!!auth);
 
   function signup(email, password) {
+    if (!auth) throw new Error("Firebase Auth not configured");
     return createUserWithEmailAndPassword(auth, email, password);
   }
 
   function login(email, password) {
+    if (!auth) throw new Error("Firebase Auth not configured");
     return signInWithEmailAndPassword(auth, email, password);
   }
 
   function logout() {
+    if (!auth) throw new Error("Firebase Auth not configured");
     return signOut(auth);
   }
 
   useEffect(() => {
+    if (!auth) {
+      console.warn("Auth not initialized, skipping auth listener");
+      return;
+    }
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setLoading(false);
@@ -45,3 +53,5 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
+
+export default AuthProvider;

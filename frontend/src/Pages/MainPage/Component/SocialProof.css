@@ -1,0 +1,42 @@
+.social-proof {
+  padding: 40px 0;
+  background-color: var(--white);
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.social-proof .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.social-label {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.uni-list {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.uni-name {
+  font-weight: 700;
+  color: #d1d5db; /* Faded logic as per design often */
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .social-proof .container {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .uni-list {
+    justify-content: center;
+    gap: 20px;
+  }
+}
