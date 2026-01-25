@@ -1,13 +1,14 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-// import SocialProof from './components/SocialProof'
-import Features from './components/Features'
-import HowItWorks from './components/HowItWorks'
-import Comparison from './components/Comparison'
-import CTA from './components/CTA'
-import Footer from './components/Footer'
+import React from 'react';
+import Navbar from './Component/Navbar';
+import Hero from './Component/Hero';
+// import SocialProof from './Component/SocialProof';
+import Features from './Component/Features';
+import HowItWorks from './Component/HowItWorks';
+import Comparison from './Component/Comparison';
+import CTA from './Component/CTA';
+import Footer from './Component/Footer';
 
-function MainPage() {
+const MainPage = () => {
   return (
     <>
       <Navbar />
@@ -19,7 +20,7 @@ function MainPage() {
       <CTA />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default MainPage
+export default MainPage;
