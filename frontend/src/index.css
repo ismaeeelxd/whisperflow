@@ -83,3 +83,31 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* --- DARK MODE OVERRIDES --- */
+[data-theme="dark"] {
+  /* Backgrounds */
+  --white: #1a1a2e;                 /* Deep Blue Background */
+  --nav-bg: rgba(26, 26, 46, 0.9);  /* Translucent Dark Nav */
+  --card-bg: #24243e;               /* Slightly lighter for cards */
+  --bg-gradient-start: #16213e;     /* Darker gradient start */
+  
+  /* Text */
+  --dark-text: #ffffff;             /* White text */
+  --light-text: #a0a0b0;            /* Soft gray text */
+  
+  /* UI Elements */
+  --border-color: #2e2e4a;
+  --primary-blue: #4f6bff;          /* Lighter blue for better visibility on dark */
+  --primary-blue-hover: #6b82ff;
+}
+
+/* Update Body to use these variables */
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--white);   /* Will switch automatically */
+  color: var(--dark-text);          /* Will switch automatically */
+  transition: background-color 0.3s, color 0.3s;
+}

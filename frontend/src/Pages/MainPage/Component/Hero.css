@@ -17,12 +17,13 @@
   max-width: 500px;
 }
 
+/* --- FIXED: Uses variable for background --- */
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background-color: #eff6ff;
-  color: #2546F5;
+  background-color: var(--bg-gradient-start); /* Adapted color */
+  color: var(--primary-blue);
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -35,7 +36,7 @@
   font-size: 3.5rem;
   line-height: 1.1;
   font-weight: 800;
-  color: var(--dark-text);
+  color: var(--dark-text); /* Adapted color */
   margin-bottom: 24px;
   text-align: left;
 }
@@ -69,14 +70,16 @@
   font-size: 1rem;
   transition: background 0.2s;
   margin : auto;
+  border: none;
 }
 
 .btn-upload:hover {
   background-color: var(--primary-blue-hover);
 }
 
+/* --- FIXED: Uses variables for background and text --- */
 .btn-demo {
-  background-color: white;
+  background-color: var(--card-bg);
   color: var(--dark-text);
   padding: 12px 24px;
   border-radius: 8px;
@@ -90,13 +93,13 @@
 }
 
 .btn-demo:hover {
-  border-color: #d1d5db;
-  background-color: #f9fafb;
+  border-color: var(--primary-blue);
+  background-color: var(--bg-gradient-start);
 }
 
 .hero-note {
   font-size: 0.8rem;
-  color: #6b7280;
+  color: var(--light-text);
 }
 
 /* Visual Mockup Styles */
@@ -105,7 +108,7 @@
 }
 
 .card-mockup {
-  background: var(--card-bg);
+  background: var(--card-bg); /* This was already good! */
   width: 450px;
   height: 300px;
   border-radius: 16px;
@@ -139,17 +142,18 @@
   gap: 20px;
 }
 
+/* --- FIXED: Uses variable for wave background --- */
 .audio-wave {
   width: 120px;
   height: 120px;
-  background: #f0f9ff;
+  background: var(--bg-gradient-start); /* Adapted color */
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   color: var(--primary-blue);
-  border: 1px solid rgba(37, 70, 245, 0.1);
+  border: 1px solid var(--border-color);
 }
 
 .content-lines {
@@ -159,23 +163,26 @@
   gap: 12px;
 }
 
+/* --- FIXED: Lines use border-color to look gray in dark mode --- */
 .line {
   height: 8px;
-  background: #f3f4f6;
+  background: var(--border-color); 
   border-radius: 4px;
   width: 100%;
 }
 
 .line.title {
   height: 12px;
-  background: #dbeafe;
+  background: var(--primary-blue); /* Make title line pop */
+  opacity: 0.3;
   width: 60%;
   margin-bottom: 8px;
 }
 
 .line.short {
   width: 40%;
-  background: #d1fae5; /* Green hint */
+  background: var(--primary-blue); /* Make short line pop */
+  opacity: 0.15;
 }
 
 .processing-badge {
@@ -194,14 +201,15 @@
   box-shadow: 0 10px 20px rgba(37, 70, 245, 0.2);
 }
 
+/* --- FIXED: Success Box uses Card BG --- */
 .success-notification {
   position: absolute;
   bottom: 30px;
   left: -30px;
-  background: white;
+  background: var(--card-bg); /* Adapted color */
   padding: 12px 16px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   gap: 12px;
@@ -211,7 +219,7 @@
 .check-icon {
   width: 24px;
   height: 24px;
-  background: #dcfce7;
+  background: rgba(22, 163, 74, 0.1); /* Transparent green */
   color: #16a34a;
   border-radius: 50%;
   display: flex;
@@ -224,7 +232,7 @@
 .notif-title {
   font-weight: 700;
   font-size: 0.85rem;
-  color: var(--dark-text);
+  color: var(--dark-text); /* Adapted color */
 }
 
 .notif-sub {
@@ -291,7 +299,6 @@
 
 .success-notification {
   animation: floatUpDown 3s ease-in-out infinite;
-  /* Keep original positioning styles */
 }
 
 .line {
