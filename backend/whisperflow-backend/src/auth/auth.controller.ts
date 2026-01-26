@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { SignUpDto } from './dtos/signUp.dto';
+import { SignUpDto } from '@whisperflow/shared';
 
 @Controller('auth')
 export class AuthController {
