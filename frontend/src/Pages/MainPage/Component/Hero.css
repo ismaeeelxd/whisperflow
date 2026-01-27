@@ -29,7 +29,8 @@
   font-size: 0.8rem;
   font-weight: 600;
   margin-bottom: 24px;
-  border: 1px solid rgba(37, 70, 245, 0.1);
+  border: 1px solid var(--primary-blue); /* Changed from rgba(...) */
+  opacity: 0.9; /* Optional, if you needed transparency */
 }
 
 .hero-title {

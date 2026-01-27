@@ -28,6 +28,12 @@ export const ThemeProvider = ({ children }) => {
   );
 };
 
-// 3. Custom hook to use the theme easily in other files
+// src/contexts/ThemeContext.jsx (Bottom of file)
 // eslint-disable-next-line react-refresh/only-export-components
-export const useTheme = () => useContext(ThemeContext);
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (context === undefined) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
+};
