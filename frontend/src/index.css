@@ -23,6 +23,9 @@
 
 /* --- DARK MODE OVERRIDES --- */
 [data-theme="dark"] {
+  /* This forces the browser's scrollbars and native inputs to be dark */
+  color-scheme: dark;
+
   /* Backgrounds */
   --white: #1a1a2e;                 /* Deep Blue Background */
   --nav-bg: rgba(26, 26, 46, 0.9);  /* Translucent Dark Nav */

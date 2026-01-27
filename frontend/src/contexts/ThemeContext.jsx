@@ -7,7 +7,13 @@ export const ThemeProvider = ({ children }) => {
   // 1. Check if the user visited before, otherwise use their system preference
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) return savedTheme;
+    
+    // --- VALIDATION CHECK: Only accept 'light' or 'dark' ---
+    if (savedTheme === 'light' || savedTheme === 'dark') {
+      return savedTheme;
+    }
+    
+    // Fallback to system preference if no valid saved theme found
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   });
 
@@ -28,7 +34,7 @@ export const ThemeProvider = ({ children }) => {
   );
 };
 
-// src/contexts/ThemeContext.jsx (Bottom of file)
+// Custom Hook
 // eslint-disable-next-line react-refresh/only-export-components
 export const useTheme = () => {
   const context = useContext(ThemeContext);
