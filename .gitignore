@@ -368,3 +368,5 @@ temp_clips/
 *.csv
 processing_state.json
 
+# Untracked files
+.DS_Store

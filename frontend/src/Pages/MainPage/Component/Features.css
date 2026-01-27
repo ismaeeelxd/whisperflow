@@ -1,6 +1,7 @@
 .features {
   padding: 100px 0;
-  background-color: #fafafa;
+  background-color: var(--white);
+  transition: background-color 0.3s;
 }
 
 .section-header {
@@ -39,28 +40,51 @@
 }
 
 .feature-card {
-  background: white;
+  background: var(--card-bg);
   padding: 32px;
   border-radius: 16px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
   box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  border: 1px solid var(--border-color);
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 20px rgba(0,0,0,0.05);
+  border-color: var(--primary-blue);
 }
 
+/* --- ICON STYLES --- */
 .feature-icon {
   width: 48px;
   height: 48px;
-  background-color: #f5f3ff;
+  background-color: var(--bg-gradient-start); 
+  color: var(--primary-blue);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+
+/* --- FORCE DARK MODE VISIBILITY --- */
+/* This specifically targets the Material UI SVG inside the feature card */
+[data-theme="dark"] .feature-card .feature-icon {
+  background-color: rgba(56, 189, 248, 0.15); /* Subtle Sky Blue Bubble */
+  border: 1px solid rgba(56, 189, 248, 0.2); /* Slight border for definition */
+}
+
+[data-theme="dark"] .feature-card .feature-icon svg,
+[data-theme="dark"] .feature-card .feature-icon .MuiSvgIcon-root {
+  color: #38bdf8 !important; /* Bright Sky Blue (Cyan) */
+  fill: #38bdf8 !important;   /* Forces the fill color */
+}
+
+/* Optional: Make the text slightly brighter in dark mode too */
+[data-theme="dark"] .feature-title {
+  color: #f3f4f6;
 }
 
 .feature-title {

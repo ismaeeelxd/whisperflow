@@ -4,9 +4,6 @@
   font-weight: 400;
 
   color-scheme: light;
-  color: #213547;
-  background-color: #ffffff;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -16,14 +13,46 @@
   --primary-blue: #2546F5;
   --primary-blue-hover: #1d36c4;
   --white: #ffffff;
-  --dark-text: #111827; /* Dark text for light mode */
-  --light-text: #6B7280; /* Gray text */
+  --dark-text: #111827; 
+  --light-text: #6B7280; 
   --bg-gradient-start: #eff6ff;
   --nav-bg: rgba(255, 255, 255, 0.8);
   --card-bg: #ffffff;
   --border-color: #e5e7eb;
 }
 
+/* --- DARK MODE OVERRIDES --- */
+[data-theme="dark"] {
+  /* This forces the browser's scrollbars and native inputs to be dark */
+  color-scheme: dark;
+
+  /* Backgrounds */
+  --white: #1a1a2e;                 /* Deep Blue Background */
+  --nav-bg: rgba(26, 26, 46, 0.9);  /* Translucent Dark Nav */
+  --card-bg: #24243e;               /* Slightly lighter for cards */
+  --bg-gradient-start: #16213e;     /* Darker gradient start */
+  
+  /* Text */
+  --dark-text: #ffffff;             /* White text */
+  --light-text: #a0a0b0;            /* Soft gray text */
+  
+  /* UI Elements */
+  --border-color: #2e2e4a;
+  --primary-blue: #4f6bff;          /* Lighter blue for better visibility on dark */
+  --primary-blue-hover: #6b82ff;
+}
+
+/* --- MERGED BODY STYLES --- */
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--white);
+  color: var(--dark-text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* ... keep the rest of your button/container styles ... */
 a {
   font-weight: 500;
   color: #646cff;
@@ -32,54 +61,12 @@ a {
 a:hover {
   color: #535bf2;
 }
-
-body {
-  margin: 0;
-  width: 100%;
-  min-height: 100vh;
-  background-color: var(--white);
-  color: var(--dark-text);
-}
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
 }
-
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }

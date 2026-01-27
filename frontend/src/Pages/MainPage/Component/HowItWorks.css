@@ -1,6 +1,7 @@
 .how-it-works {
   padding: 100px 0;
-  background-color: white;
+  background-color: var(--white);
+  transition: background-color 0.3s;
 }
 
 .steps-container {
@@ -27,7 +28,8 @@
 .step-icon {
   width: 64px;
   height: 64px;
-  background: #f0fdf4; /* Light green/blue variation */
+  background: var(--card-bg); 
+  border: 1px solid var(--border-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -35,16 +37,29 @@
   font-size: 1.75rem;
   margin: 0 auto;
   color: var(--primary-blue);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: color 0.3s ease;
 }
 
-.step-item:nth-child(2) .step-icon {
-  background: #fdf2f8; /* Pinkish */
-  color: #db2777;
+/* --- FORCE DARK MODE COLORS (Use !important to override inline styles) --- */
+
+/* 1. Upload Audio Icon (Bright Blue) */
+[data-theme="dark"] .step-item:nth-child(1) .step-icon,
+[data-theme="dark"] .step-item:nth-child(1) .step-icon svg {
+  color: #60a5fa !important; 
+  border-color: rgba(96, 165, 250, 0.3);
 }
 
-.step-item:nth-child(3) .step-icon {
-  background: #ecfdf5; /* Greenish */
-  color: #059669;
+/* 2. AI Processing Icon (Bright Pink) */
+[data-theme="dark"] .step-item:nth-child(2) .step-icon,
+[data-theme="dark"] .step-item:nth-child(2) .step-icon svg {
+  color: #f472b6 !important;
+}
+
+/* 3. Download Icon (Bright Green) */
+[data-theme="dark"] .step-item:nth-child(3) .step-icon,
+[data-theme="dark"] .step-item:nth-child(3) .step-icon svg {
+  color: #34d399 !important;
 }
 
 .step-title {

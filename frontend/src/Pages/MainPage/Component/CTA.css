@@ -3,12 +3,26 @@
 }
 
 .cta-box {
+  /* --- Default (Light Mode) --- */
   background: var(--primary-blue);
   border-radius: 24px;
   padding: 80px 40px;
   text-align: center;
   color: white;
   box-shadow: 0 20px 40px rgba(37, 70, 245, 0.2);
+  
+  /* Smooth transition for theme switch */
+  transition: all 0.3s ease;
+  border: 1px solid transparent; /* Placeholder for dark mode border */
+}
+
+/* --- DARK MODE: CALM THEME --- */
+[data-theme="dark"] .cta-box {
+  /* Instead of bright blue, use a subtle glass-like dark blue */
+  background: rgba(37, 70, 245, 0.05); 
+  border: 1px solid rgba(37, 70, 245, 0.2); /* Thin blue ring */
+  box-shadow: none; /* Remove heavy shadow */
+  color: var(--dark-text); /* White text */
 }
 
 .cta-title {
@@ -23,18 +37,40 @@
   opacity: 0.9;
 }
 
+/* Dim the subtitle in dark mode so it's not too stark */
+[data-theme="dark"] .cta-subtitle {
+  color: var(--light-text);
+  opacity: 1;
+}
+
 .cta-button {
+  /* --- Default (Light Mode Button) --- */
   background: white;
   color: var(--primary-blue);
   padding: 16px 32px;
   border-radius: 8px;
   font-weight: 700;
   font-size: 1rem;
-  /* font-size: 1rem; */
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   -webkit-font-smoothing: antialiased;
+  border: none;
+  cursor: pointer;
 }
 
 .cta-button:hover {
+  /* Light mode hover: slight glow or text dim */
   color: var(--primary-blue-hover);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* --- DARK MODE BUTTON: INVERTED --- */
+[data-theme="dark"] .cta-button {
+  background: var(--primary-blue); /* Blue Button */
+  color: white; /* White Text */
+}
+
+[data-theme="dark"] .cta-button:hover {
+  background: var(--primary-blue-hover); /* Darker blue on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(37, 70, 245, 0.4); /* Blue glow */
 }
