@@ -1,6 +1,7 @@
-import './Comparison.css'
+import React from 'react';
+import './Comparison.css';
 
-function Comparison() {
+const Comparison = () => {
   return (
     <section className="comparison">
       <div className="container">
@@ -38,14 +39,14 @@ function Comparison() {
           <div className="comp-card after">
             <div className="comp-visual blue-bg">
               <div className="slide-deck">
-                <div className="slide-card top">
-                   <div className="slide-header">WhisperFlow</div>
-                   <div className="slide-body">
+                <div className="mock-slide-card top">
+                   <div className="mock-slide-header">WhisperFlow</div>
+                   <div className="mock-slide-body">
                      <div className="slide-line"></div>
                      <div className="slide-line"></div>
                    </div>
                 </div>
-                <div className="slide-card bottom"></div>
+                <div className="mock-slide-card bottom"></div>
               </div>
             </div>
             <div className="comp-content">
@@ -58,7 +59,7 @@ function Comparison() {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Comparison
+export default Comparison;

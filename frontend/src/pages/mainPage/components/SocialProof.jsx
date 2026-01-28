@@ -1,7 +1,8 @@
-import './SocialProof.css'
+import React from 'react';
+import './SocialProof.css';
 
-function SocialProof() {
-  const unis = ['Stanford', 'MIT', 'Cambridge', 'ETH Zürich', 'KAUST']
+const SocialProof = () => {
+  const unis = ['Stanford', 'MIT', 'Cambridge', 'ETH Zürich', 'KAUST'];
   
   return (
     <div className="social-proof">
@@ -14,7 +15,7 @@ function SocialProof() {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SocialProof
+export default SocialProof;

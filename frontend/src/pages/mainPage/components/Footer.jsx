@@ -1,7 +1,8 @@
-import './Footer.css'
-import GraphicEqIcon from '@mui/icons-material/GraphicEq'
+import React from 'react';
+import './Footer.css';
+import GraphicEqIcon from '@mui/icons-material/GraphicEq';
 
-function Footer() {
+const Footer = () => {
   return (
     <footer className="footer">
       <div className="container footer-container">
@@ -49,7 +50,7 @@ function Footer() {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

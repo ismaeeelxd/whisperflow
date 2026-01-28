@@ -1,8 +1,9 @@
-import './Navbar.css'
-import MatrialUi from './MatrialUi'
-import GraphicEqIcon from '@mui/icons-material/GraphicEq'
+import React from "react";
+import "./Navbar.css";
+import MatrialUi from "./MatrialUi";
+import GraphicEqIcon from '@mui/icons-material/GraphicEq';
 
-function Navbar() {
+const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="container navbar-container">
@@ -33,7 +34,7 @@ function Navbar() {
         <MatrialUi />
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

@@ -1,6 +1,7 @@
-import './CTA.css'
+import React from 'react';
+import './CTA.css';
 
-function CTA() {
+const CTA = () => {
   return (
     <section className="cta-section">
       <div className="container">
@@ -11,7 +12,7 @@ function CTA() {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default CTA
+export default CTA;

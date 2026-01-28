@@ -1,9 +1,10 @@
-import './HowItWorks.css'
-import SaveAltIcon from '@mui/icons-material/SaveAlt'
-import PsychologyOutlinedIcon from '@mui/icons-material/PsychologyOutlined'
-import UploadFileIcon from '@mui/icons-material/UploadFile'
+import React from 'react';
+import './HowItWorks.css';
+import SaveAltIcon from '@mui/icons-material/SaveAlt';
+import PsychologyOutlinedIcon from '@mui/icons-material/PsychologyOutlined';
+import UploadFileIcon from '@mui/icons-material/UploadFile';
 
-function HowItWorks() {
+const HowItWorks = () => {
   const steps = [
     {
       num: 1,
@@ -23,7 +24,7 @@ function HowItWorks() {
       title: 'Download Slides',
       desc: 'Receive your structured bilingual slides in PDF or PPT format.'
     }
-  ]
+  ];
 
   return (
     <section id="how-it-works" className="how-it-works">
@@ -46,7 +47,7 @@ function HowItWorks() {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default HowItWorks
+export default HowItWorks;

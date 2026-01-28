@@ -1,9 +1,9 @@
-import './Features.css'
-import TranslateIcon from '@mui/icons-material/Translate'
-import StyleIcon from '@mui/icons-material/Style'
-import MicNoneIcon from '@mui/icons-material/MicNone'
-
-function Features() {
+import React from 'react';
+import './Features.css';
+import TranslateIcon from '@mui/icons-material/Translate';
+import StyleIcon from '@mui/icons-material/Style';
+import MicNoneIcon from '@mui/icons-material/MicNone';
+const Features = () => {
   const features = [
     {
       icon: <MicNoneIcon sx={{ color: '#0f0092ff',fontSize: 35 ,}} />,
@@ -20,7 +20,7 @@ function Features() {
       title: 'Smart Slide Generation',
       desc: "Get ready-to-study bullet points automatically formatted into clean, visually organized slides."
     }
-  ]
+  ];
 
   return (
     <section id="features" className="features">
@@ -42,7 +42,7 @@ function Features() {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Features
+export default Features;

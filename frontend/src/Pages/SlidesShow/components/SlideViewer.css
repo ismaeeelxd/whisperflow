@@ -1,0 +1,265 @@
+/* SlideViewer Component */
+.main-viewer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--color-bg-light);
+  overflow-y: auto;
+}
+
+.dark .main-viewer {
+  background-color: var(--color-bg-dark);
+}
+
+.context-header {
+  padding: 24px 32px 8px 32px;
+  flex: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.edit-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.view-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-slate-900);
+  margin: 0;
+}
+
+.dark .view-title {
+  color: var(--color-text-dark);
+}
+
+.action-group {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-btn-box {
+  padding: 8px;
+  border-radius: 8px;
+  color: var(--color-slate-500);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn-box:hover {
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.dark .icon-btn-box:hover {
+  background-color: var(--color-slate-800);
+}
+
+/* Canvas Area */
+.canvas-area {
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+.slide-card {
+  width: 100%;
+  max-width: 1024px;
+  aspect-ratio: 16/9;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px -12px rgba(0,0,0,0.1);
+  border: 1px solid var(--color-slate-200);
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.dark .slide-card {
+  background-color: var(--color-slate-800);
+  border-color: var(--color-slate-700);
+}
+
+.deco-element {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 128px;
+  height: 128px;
+  background-color: var(--color-primary-light);
+  border-bottom-left-radius: 100%;
+  pointer-events: none;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 10;
+}
+
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.slide-main-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-slate-900);
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.dark .slide-main-title {
+  color: white;
+}
+
+.edit-trigger {
+  opacity: 0;
+  transition: opacity 0.2s;
+  padding: 8px;
+  background-color: var(--color-slate-100);
+  border-radius: 50%;
+  color: var(--color-slate-500);
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+
+.slide-card:hover .edit-trigger {
+  opacity: 1;
+}
+
+.edit-trigger:hover {
+  color: var(--color-primary);
+}
+
+.slide-sub-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--color-slate-400);
+  letter-spacing: -0.025em;
+  text-align: right;
+  margin: 0;
+  font-family: 'Lexend', sans-serif; /* fallback */
+}
+
+.dark .slide-sub-title {
+    color: var(--color-slate-500);
+}
+
+/* Content Layout */
+.content-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  overflow-y: auto;
+  padding-right: 8px;
+  align-items: start;
+}
+
+/* Emulate @lg container query with standard media query for now, or just flex */
+@media (min-width: 1024px) {
+  .content-grid.split-mode {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+}
+
+.content-block {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.point-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.point-dot {
+  flex: none;
+  margin-top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
+.point-dot.light {
+  background-color: rgba(19, 19, 236, 0.4);
+}
+
+.point-text {
+  font-size: 1.125rem;
+  color: var(--color-slate-700);
+  line-height: 1.625;
+  font-weight: 500;
+  margin: 0;
+}
+
+.dark .point-text {
+  color: var(--color-slate-300);
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Footer */
+.card-footer {
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-slate-100);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  color: var(--color-slate-400);
+  font-weight: 500;
+}
+
+.dark .card-footer {
+    border-color: var(--color-slate-700);
+}
+
+.slide-number {
+  background-color: var(--color-slate-100);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.dark .slide-number {
+  background-color: var(--color-slate-700);
+}
+
+.footer-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

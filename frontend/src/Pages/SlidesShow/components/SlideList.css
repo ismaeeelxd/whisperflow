@@ -1,0 +1,154 @@
+/* SlideList Component */
+.sidebar-list {
+  width: 256px; /* w-64 */
+  flex: none;
+  border-right: 1px solid var(--color-border);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.dark .sidebar-list {
+  border-color: var(--color-border-dark);
+  background-color: var(--color-slate-900);
+}
+
+.sidebar-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dark .sidebar-header {
+  border-color: var(--color-border-dark);
+}
+
+.header-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-slate-400);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.icon-btn-minimal {
+  background: none;
+  border: none;
+  color: var(--color-slate-400);
+  transition: color 0.2s;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn-minimal:hover {
+  color: var(--color-primary);
+}
+
+.list-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.slide-item-wrapper {
+  cursor: pointer;
+}
+
+.slide-thumbnail {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.2s;
+  background-color: var(--color-slate-100);
+  border: 1px solid transparent;
+}
+
+.slide-thumbnail:hover {
+  border-color: var(--color-slate-300);
+}
+
+.dark .slide-thumbnail {
+  background-color: var(--color-slate-800);
+}
+
+.dark .slide-thumbnail:hover {
+  border-color: var(--color-slate-600);
+}
+
+.slide-thumbnail.active {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.dark .slide-thumbnail.active {
+  outline-offset: 2px; /* Tailwind's ring offset logic is slightly complex, simple outline works here */
+  /* To mimic ring-offset-slate-900 we'd need a box-shadow approach */
+  box-shadow: 0 0 0 2px var(--color-bg-light), 0 0 0 4px var(--color-primary);
+}
+
+.dark .slide-thumbnail.active {
+    box-shadow: 0 0 0 2px var(--color-bg-dark), 0 0 0 4px var(--color-primary);
+}
+
+.thumbnail-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.thumbnail-bg.dimmed {
+  opacity: 0.8;
+}
+
+.duration-badge {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.check-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 2px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-label {
+  margin-top: 6px;
+  padding-left: 4px;
+  font-size: 0.75rem; /* xs */
+  font-weight: 500;
+  color: var(--color-slate-500);
+}
+
+.slide-label.active {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.875rem; /* sm */
+  margin-top: 8px;
+}

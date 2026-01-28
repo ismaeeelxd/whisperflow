@@ -1,9 +1,10 @@
-import './Hero.css'
-import GraphicEqIcon from '@mui/icons-material/GraphicEq'
-import UploadFileIcon from '@mui/icons-material/UploadFile'
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
+import React from 'react';
+import './Hero.css';
+import GraphicEqIcon from '@mui/icons-material/GraphicEq';
+import UploadFileIcon from '@mui/icons-material/UploadFile';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
-function Hero() {
+const Hero = () => {
   return (
     <section className="hero">
       <div className="container hero-container">
@@ -59,7 +60,7 @@ function Hero() {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
