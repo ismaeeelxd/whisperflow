@@ -15,13 +15,18 @@ import CloseIcon from '@mui/icons-material/Close';
 const LectureCard = ({ data, isPlaceholder, onUpload }) => {
   if (isPlaceholder) {
     return (
-      <div className="placeholder-card" onClick={onUpload}>
+      <button 
+        type="button" 
+        className="placeholder-card" 
+        onClick={onUpload}
+        aria-label="Upload new lecture"
+      >
         <div className="add-icon-circle">
           <AddIcon sx={{ fontSize: 32 }} />
         </div>
         <div className="placeholder-text">Upload Lecture</div>
         <div className="placeholder-sub">Audio or Video files</div>
-      </div>
+      </button>
     );
   }
 
@@ -80,10 +85,10 @@ const LectureCard = ({ data, isPlaceholder, onUpload }) => {
         <div className="card-actions">
           {status === 'completed' && (
             <>
-              <button className="btn-view">
+              <button type="button" className="btn-view">
                 <PlayArrowIcon sx={{ fontSize: 18 }} /> View Slides
               </button>
-              <button className="btn-icon-only">
+              <button type="button" className="btn-icon-only" aria-label="Share">
                 <IosShareIcon sx={{ fontSize: 18 }} />
               </button>
             </>
@@ -91,10 +96,10 @@ const LectureCard = ({ data, isPlaceholder, onUpload }) => {
 
           {status === 'processing' && (
             <>
-              <button className="btn-view disabled" disabled>
+              <button type="button" className="btn-view disabled" disabled>
                 <PlayArrowIcon sx={{ fontSize: 18 }} /> View Slides
               </button>
-              <button className="btn-icon-only" style={{ border: 'none' }}>
+              <button type="button" className="btn-icon-only" style={{ border: 'none' }} aria-label="Cancel processing">
                  <CloseIcon sx={{ fontSize: 18 }} />
               </button>
             </>
@@ -102,10 +107,15 @@ const LectureCard = ({ data, isPlaceholder, onUpload }) => {
 
           {status === 'failed' && (
             <>
-              <button className="btn-retry">
+              <button type="button" className="btn-retry">
                 <ReplayIcon sx={{ fontSize: 18 }} /> Retry Upload
               </button>
-              <button className="btn-icon-only" style={{ color: '#ef4444', borderColor: '#fecaca', background: '#fef2f2' }}>
+              <button 
+                type="button" 
+                className="btn-icon-only" 
+                style={{ color: '#ef4444', borderColor: '#fecaca', background: '#fef2f2' }}
+                aria-label="Delete lecture"
+              >
                 <DeleteOutlineIcon sx={{ fontSize: 18 }} />
               </button>
             </>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './Dashboard.css';
-import Sidebar from './Sidebar'; // <--- Imported Standalone Sidebar
+import Sidebar from './Sidebar';
 import LectureCard from './LectureCard';
 
-// Icons for Topbar
+// Icons
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -14,10 +14,8 @@ const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [activeFilter, setActiveFilter] = useState('All');
 
-  // will be added later
+ // will be added later
   const lectures = []; 
-
-  // will be added later
   const filters = ['All'];
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
@@ -25,10 +23,10 @@ const Dashboard = () => {
   return (
     <div className="dashboard-container">
       
-      {/* --- STANDALONE SIDEBAR --- */}
+      {/* --- SIDEBAR --- */}
       <Sidebar 
         isOpen={isSidebarOpen} 
-        user={{ name: "User Name", plan: "Basic Plan" }} // Pass generic or real user data here
+        user={{ name: "User Name", plan: "Basic Plan" }} 
       />
 
       {/* --- MAIN CONTENT --- */}
@@ -36,9 +34,14 @@ const Dashboard = () => {
         
         {/* Top Bar */}
         <div className="top-bar">
-           <div className="toggle-btn" onClick={toggleSidebar}>
+           <button 
+             type="button" 
+             className="toggle-btn btn-reset" 
+             onClick={toggleSidebar} 
+             aria-label={isSidebarOpen ? "Close sidebar" : "Open sidebar"}
+           >
               {isSidebarOpen ? <ChevronLeftIcon /> : <MenuIcon />}
-           </div>
+           </button>
            
            <div className="search-bar">
               <SearchIcon />
@@ -46,8 +49,12 @@ const Dashboard = () => {
            </div>
 
            <div className="top-actions">
-              <NotificationsNoneIcon sx={{ color: 'var(--light-text)', cursor: 'pointer' }} />
-              <button className="btn-new-lecture" onClick={() => console.log('Upload clicked')}>
+              {/* Notification icon as a button for keyboard access */}
+              <button type="button" className="btn-reset" aria-label="Notifications">
+                <NotificationsNoneIcon sx={{ color: 'var(--light-text)' }} />
+              </button>
+
+              <button type="button" className="btn-new-lecture" onClick={() => console.log('Upload clicked')}>
                  <CloudUploadIcon /> Upload New Lecture
               </button>
            </div>
@@ -62,25 +69,23 @@ const Dashboard = () => {
            <div className="filter-row">
               <div className="filter-chips">
                  {filters.map(filter => (
-                    <div 
+                    <button 
                       key={filter}
+                      type="button"
                       className={`chip ${activeFilter === filter ? 'active' : ''}`}
                       onClick={() => setActiveFilter(filter)}
                     >
                       {filter}
-                    </div>
+                    </button>
                  ))}
               </div>
            </div>
 
-           {/* Grid - Now Clean */}
+           {/* Grid */}
            <div className="lectures-grid">
-              {/* Always show the Upload Placeholder */}
               <LectureCard isPlaceholder onUpload={() => console.log('Upload clicked')} />
 
-              {/* If no lectures, we could show an empty state message here, 
-                  but for now it just shows the placeholder card. */}
-              {lectures.length > 0 && lectures.map(lecture => (
+              {lectures.map(lecture => (
                  <LectureCard key={lecture.id} data={lecture} />
               ))}
            </div>

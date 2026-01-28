@@ -1,6 +1,6 @@
 import React from 'react';
 import './Dashboard.css';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 // Icons
 import GraphicEqIcon from '@mui/icons-material/GraphicEq';
@@ -11,14 +11,6 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
 const Sidebar = ({ isOpen, user }) => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  // Helper to check active state
-  // We explicitly check if path is "/" OR "/dashboard" so it's always highlighted
-  const isDashboardActive = location.pathname === '/' || location.pathname === '/dashboard';
-  const isActive = (path) => location.pathname === path;
-
   return (
     <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
       
@@ -30,40 +22,33 @@ const Sidebar = ({ isOpen, user }) => {
 
       {/* Navigation Menu */}
       <nav className="nav-menu">
-         <div 
-           className={`nav-item ${isDashboardActive ? 'active' : ''}`} 
-           onClick={() => navigate('/dashboard')}
-         >
+         {/* NavLink automatically adds the 'active' class when the URL matches */}
+         <NavLink to="/dashboard" className="nav-item">
            <DashboardIcon /> {isOpen && "Dashboard"}
-         </div>
+         </NavLink>
          
-         <div 
-           className={`nav-item ${isActive('/library') ? 'active' : ''}`}
-           onClick={() => navigate('/library')}
-         >
+         <NavLink to="/library" className="nav-item">
            <VideoLibraryIcon /> {isOpen && "My Library"}
-         </div>
+         </NavLink>
          
-         <div 
-           className={`nav-item ${isActive('/archives') ? 'active' : ''}`}
-           onClick={() => navigate('/archives')}
-         >
+         <NavLink to="/archives" className="nav-item">
            <InventoryIcon /> {isOpen && "Archives"}
-         </div>
+         </NavLink>
          
-         <div 
-           className={`nav-item ${isActive('/settings') ? 'active' : ''}`}
-           onClick={() => navigate('/settings')}
-         >
+         <NavLink to="/settings" className="nav-item">
            <SettingsIcon /> {isOpen && "Settings"}
-         </div>
+         </NavLink>
       </nav>
 
       {/* User Profile Area */}
       <div className="user-profile">
-          <div className="nav-item" style={{ marginBottom: '16px' }}>
+          <button 
+            type="button" 
+            className="nav-item btn-reset" 
+            style={{ marginBottom: '16px', width: '100%', justifyContent: 'flex-start' }}
+          >
               <HelpOutlineIcon /> {isOpen && "Help & Support"}
-          </div>
+          </button>
           
           <div className="user-info-card">
              <img 
